@@ -12,7 +12,7 @@ using namespace cv;
 
 
 
-void PreProcess(Mat &SrcImg, Mat &gray, Mat &binary) {
+void PreProcess(Mat &SrcImg, Mat &gray, Mat &binary, enum Plan plan) {
     Mat tempFrame;
     Mat cameraMatrix = (Mat_<float>(3, 3) << 638.9910, 0, 320.4412,
             0, 639.3573, 254.3665,
@@ -25,8 +25,16 @@ void PreProcess(Mat &SrcImg, Mat &gray, Mat &binary) {
     cvtColor(SrcImg, gray, COLOR_BGR2GRAY);
 
     GaussianBlur(gray, gray, Size(5, 5), 10, 20);
-    threshold(gray, binary, 100, 255, THRESH_BINARY);
+    if (plan == PlanA) {
+        threshold(gray, binary, 100, 255, THRESH_BINARY);
+        Mat kernel = getStructuringElement(0, Size(2, 2));
+        erode(binary, binary, kernel, Point(-1, -1), 3);
+    } else if (plan == PlanB) {
+        threshold(gray, binary, 100, 255, THRESH_OTSU != 0);
+        Mat kernel_mor = getStructuringElement(MORPH_RECT,Size(1,1));
+        Mat kernel_dilate = getStructuringElement(MORPH_DILATE,Size(3,3));
+        morphologyEx(binary, binary, MORPH_OPEN,kernel_mor,Point(-1,-1),1);
+        dilate(binary,binary,kernel_dilate,Point(-1,-1),4);
+    }
 
-    Mat kernel = getStructuringElement(0, Size(2, 2));
-    erode(binary, binary, kernel, Point(-1, -1), 3);
 }

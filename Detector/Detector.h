@@ -74,4 +74,77 @@ public:
     ~DetectorA();
 };
 
+
+#define Up_1 0
+#define Left_1 1
+#define Right_1 2
+#define Down_1 3
+#define Down_2 4
+#define NoMove 5
+
+/**
+ * @brief 对本类的数据成员的解释
+ * @param img->原图
+ * @param gray->处理后的灰度图
+ * @param binary->处理后的二值化图
+ * @param Direction->应该旋转的方向
+ * @param CenterOfCenter->矿石的正中心
+ * @param contours->第一次寻找到的所有轮廓
+ * @param rects->筛选掉小噪点的矩形拟合
+ * @param interested_contours->在限制条件下匹配成功的矩形
+ * @param cornerRect->四个角的可能矩形
+ * @param cornerContours->四个角的可能矩形的轮廓
+ * @param point2F->在角上的矩形的四个角点坐标
+ * @param FullFilledRects->被填充满的矩形
+ * @param CenterOfRects->在角上的矩形的中心点
+ * @param number->标记被填充满的矩形的下标
+ * @param contours_barcode->寻找条形码中的轮廓
+ */
+class DetectorB{
+private:
+
+    Mat img;
+    Mat gray;
+    Mat binary;
+    int Direction;
+
+    Point CenterOfCenter;
+
+    vector<vector<Point>> contours;
+    vector<RotatedRect> rects;
+
+    vector<vector<Point>> interested_contours;
+    vector<vector<Point>> cornerContours;
+    vector<RotatedRect> cornerRect;
+
+    Point2f point2F[4][4];
+    vector<RotatedRect> FullFiilledRects;
+    vector<Point> CentersOfRects;
+    vector<int> number;
+    int num;
+
+    vector<vector<Point>> contours_barcode;
+
+    void SelectContours();
+
+    bool SelectCornerRect();
+
+    void findFullFilledRect();
+
+    void SolveCenter();
+
+    bool findBarCode();
+
+    int JudgeSides();
+public:
+    DetectorB(Mat& frame);
+
+    Mat getImg();
+
+    void detect();
+
+    ~DetectorB();
+
+};
+
 #endif //HELIOSCV2022_ENGINETRUCK_DETECTOR_H

@@ -21,9 +21,10 @@ int main() {
             cout << "Image is empty!" << endl;
             break;
         }
-        DetectorA detectorA(frame);
-        detectorA.detect();
-        frame = detectorA.getImg();
+        flip(frame, frame, 1);
+        DetectorB detectorB(frame);
+        detectorB.detect();
+        frame = detectorB.getImg();
         imshow("frame", frame);
 
         int c = waitKey(10);
