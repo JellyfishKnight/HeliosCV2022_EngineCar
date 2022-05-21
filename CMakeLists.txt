@@ -15,7 +15,7 @@ find_package( OpenCV 4 REQUIRED )
 include_directories( ${OpenCV_INCLUDE_DIRS} )
 message("OPENCV INC DIR: ${OpenCV_INCLUDE_DIRS}")
 
-set(OPENCV_LIBS opencv_core opencv_imgproc opencv_highgui opencv_imgcodecs)
+set(OPENCV_LIBS opencv_core opencv_imgproc opencv_highgui opencv_imgcodecs opencv_calib3d)
 
 add_executable(HeliosCV2022_EngineTruck main.cpp ${HELIOS_HPPS} ${HELIOS_CPPS} )
 

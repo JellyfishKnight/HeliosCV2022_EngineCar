@@ -85,9 +85,9 @@ build CMakeFiles/HeliosCV2022_EngineTruck.dir/Serials/SerialPort.cpp.o: CXX_COMP
 #############################################
 # Link the executable HeliosCV2022_EngineTruck
 
-build HeliosCV2022_EngineTruck: CXX_EXECUTABLE_LINKER__HeliosCV2022_EngineTruck_Debug CMakeFiles/HeliosCV2022_EngineTruck.dir/main.cpp.o CMakeFiles/HeliosCV2022_EngineTruck.dir/PreProcess/PreProcess.cpp.o CMakeFiles/HeliosCV2022_EngineTruck.dir/Detector/Detector.cpp.o CMakeFiles/HeliosCV2022_EngineTruck.dir/Serials/SerialPort.cpp.o | /usr/local/lib/libopencv_highgui.so.4.5.4 /usr/local/lib/libopencv_videoio.so.4.5.4 /usr/local/lib/libopencv_imgcodecs.so.4.5.4 /usr/local/lib/libopencv_imgproc.so.4.5.4 /usr/local/lib/libopencv_core.so.4.5.4
+build HeliosCV2022_EngineTruck: CXX_EXECUTABLE_LINKER__HeliosCV2022_EngineTruck_Debug CMakeFiles/HeliosCV2022_EngineTruck.dir/main.cpp.o CMakeFiles/HeliosCV2022_EngineTruck.dir/PreProcess/PreProcess.cpp.o CMakeFiles/HeliosCV2022_EngineTruck.dir/Detector/Detector.cpp.o CMakeFiles/HeliosCV2022_EngineTruck.dir/Serials/SerialPort.cpp.o | /usr/local/lib/libopencv_highgui.so.4.5.4 /usr/local/lib/libopencv_calib3d.so.4.5.4 /usr/local/lib/libopencv_videoio.so.4.5.4 /usr/local/lib/libopencv_imgcodecs.so.4.5.4 /usr/local/lib/libopencv_features2d.so.4.5.4 /usr/local/lib/libopencv_imgproc.so.4.5.4 /usr/local/lib/libopencv_flann.so.4.5.4 /usr/local/lib/libopencv_core.so.4.5.4
   FLAGS = -g
-  LINK_LIBRARIES = -Wl,-rpath,/usr/local/lib  /usr/local/lib/libopencv_highgui.so.4.5.4  /usr/local/lib/libopencv_videoio.so.4.5.4  /usr/local/lib/libopencv_imgcodecs.so.4.5.4  /usr/local/lib/libopencv_imgproc.so.4.5.4  /usr/local/lib/libopencv_core.so.4.5.4
+  LINK_LIBRARIES = -Wl,-rpath,/usr/local/lib  /usr/local/lib/libopencv_highgui.so.4.5.4  /usr/local/lib/libopencv_calib3d.so.4.5.4  /usr/local/lib/libopencv_videoio.so.4.5.4  /usr/local/lib/libopencv_imgcodecs.so.4.5.4  /usr/local/lib/libopencv_features2d.so.4.5.4  /usr/local/lib/libopencv_imgproc.so.4.5.4  /usr/local/lib/libopencv_flann.so.4.5.4  /usr/local/lib/libopencv_core.so.4.5.4
   OBJECT_DIR = CMakeFiles/HeliosCV2022_EngineTruck.dir
   POST_BUILD = :
   PRE_LINK = :

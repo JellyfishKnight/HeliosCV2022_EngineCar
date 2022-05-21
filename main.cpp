@@ -8,7 +8,7 @@ using namespace cv;
 
 int main() {
     Mat frame;
-    VideoCapture capture(2);             //此处的index自定
+    VideoCapture capture(0);             //此处的index自定
     if (!capture.isOpened()) {
         cout << "Wrong Index or Not Connected! " << endl;
         return 1;
@@ -26,7 +26,7 @@ int main() {
         frame = detectorA.getImg();
         imshow("frame", frame);
 
-        int c = waitKey(0);
+        int c = waitKey(10);
         if (c == 27) {
             break;
         }

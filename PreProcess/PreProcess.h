@@ -6,13 +6,11 @@
 #define HELIOSCV2022_ENGINETRUCK_PREPROCESS_H
 
 #include<opencv2/core.hpp>
+#include <opencv2/calib3d.hpp>
+
 
 using namespace cv;
 
-extern Mat cameraMatrix;
-extern Mat disCoeffs;
-extern int wl[2];
-
-void PreProcess(Mat& SrcImg);
+void PreProcess(Mat& SrcImg, Mat& gray, Mat& binary);
 
 #endif //HELIOSCV2022_ENGINETRUCK_PREPROCESS_H
