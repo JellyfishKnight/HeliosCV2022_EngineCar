@@ -1,0 +1,5 @@
+/snap/clion/190/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/snap/clion/190/bin/ninja/linux/ninja -G Ninja -S /home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck -B /home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/cmake-build-debug
+OPENCV INC DIR: /usr/local/include/opencv4
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/cmake-build-debug

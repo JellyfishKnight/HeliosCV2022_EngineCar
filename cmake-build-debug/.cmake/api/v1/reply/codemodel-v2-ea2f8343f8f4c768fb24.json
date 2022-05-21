@@ -1,0 +1,60 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.22"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "HeliosCV2022_EngineTruck",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "HeliosCV2022_EngineTruck::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-HeliosCV2022_EngineTruck-Debug-d0de7693e6125e5e5052.json",
+					"name" : "HeliosCV2022_EngineTruck",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/cmake-build-debug",
+		"source" : "/home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}
