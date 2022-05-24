@@ -1,3 +1,12 @@
 /home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/cmake-build-debug/CMakeFiles/HeliosCV2022_EngineTruck.dir
 /home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/cmake-build-debug/CMakeFiles/edit_cache.dir
 /home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/cmake-build-debug/Detector/CMakeFiles/Detector.dir
+/home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/cmake-build-debug/Detector/CMakeFiles/edit_cache.dir
+/home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/cmake-build-debug/Detector/CMakeFiles/rebuild_cache.dir
+/home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/cmake-build-debug/Serials/CMakeFiles/Serials.dir
+/home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/cmake-build-debug/Serials/CMakeFiles/edit_cache.dir
+/home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/cmake-build-debug/Serials/CMakeFiles/rebuild_cache.dir
+/home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/cmake-build-debug/PreProcess/CMakeFiles/PreProcess.dir
+/home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/cmake-build-debug/PreProcess/CMakeFiles/edit_cache.dir
+/home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/cmake-build-debug/PreProcess/CMakeFiles/rebuild_cache.dir

@@ -47,35 +47,14 @@ cmake_ninja_workdir = /home/wjy/Projects/Robomaster_project_learning/HeliosCV202
 #############################################
 # Order-only phony target for HeliosCV2022_EngineTruck
 
-build cmake_object_order_depends_target_HeliosCV2022_EngineTruck: phony || CMakeFiles/HeliosCV2022_EngineTruck.dir
+build cmake_object_order_depends_target_HeliosCV2022_EngineTruck: phony || cmake_object_order_depends_target_Detector cmake_object_order_depends_target_PreProcess cmake_object_order_depends_target_Serials
 
 build CMakeFiles/HeliosCV2022_EngineTruck.dir/main.cpp.o: CXX_COMPILER__HeliosCV2022_EngineTruck_Debug /home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/main.cpp || cmake_object_order_depends_target_HeliosCV2022_EngineTruck
   DEP_FILE = CMakeFiles/HeliosCV2022_EngineTruck.dir/main.cpp.o.d
   FLAGS = -g
-  INCLUDES = -isystem /usr/local/include/opencv4
+  INCLUDES = -I/home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/Detector -I/home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/Serials -I/home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/PreProcess -isystem /usr/local/include/opencv4
   OBJECT_DIR = CMakeFiles/HeliosCV2022_EngineTruck.dir
   OBJECT_FILE_DIR = CMakeFiles/HeliosCV2022_EngineTruck.dir
-
-build CMakeFiles/HeliosCV2022_EngineTruck.dir/PreProcess/PreProcess.cpp.o: CXX_COMPILER__HeliosCV2022_EngineTruck_Debug /home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/PreProcess/PreProcess.cpp || cmake_object_order_depends_target_HeliosCV2022_EngineTruck
-  DEP_FILE = CMakeFiles/HeliosCV2022_EngineTruck.dir/PreProcess/PreProcess.cpp.o.d
-  FLAGS = -g
-  INCLUDES = -isystem /usr/local/include/opencv4
-  OBJECT_DIR = CMakeFiles/HeliosCV2022_EngineTruck.dir
-  OBJECT_FILE_DIR = CMakeFiles/HeliosCV2022_EngineTruck.dir/PreProcess
-
-build CMakeFiles/HeliosCV2022_EngineTruck.dir/Detector/Detector.cpp.o: CXX_COMPILER__HeliosCV2022_EngineTruck_Debug /home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/Detector/Detector.cpp || cmake_object_order_depends_target_HeliosCV2022_EngineTruck
-  DEP_FILE = CMakeFiles/HeliosCV2022_EngineTruck.dir/Detector/Detector.cpp.o.d
-  FLAGS = -g
-  INCLUDES = -isystem /usr/local/include/opencv4
-  OBJECT_DIR = CMakeFiles/HeliosCV2022_EngineTruck.dir
-  OBJECT_FILE_DIR = CMakeFiles/HeliosCV2022_EngineTruck.dir/Detector
-
-build CMakeFiles/HeliosCV2022_EngineTruck.dir/Serials/SerialPort.cpp.o: CXX_COMPILER__HeliosCV2022_EngineTruck_Debug /home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/Serials/SerialPort.cpp || cmake_object_order_depends_target_HeliosCV2022_EngineTruck
-  DEP_FILE = CMakeFiles/HeliosCV2022_EngineTruck.dir/Serials/SerialPort.cpp.o.d
-  FLAGS = -g
-  INCLUDES = -isystem /usr/local/include/opencv4
-  OBJECT_DIR = CMakeFiles/HeliosCV2022_EngineTruck.dir
-  OBJECT_FILE_DIR = CMakeFiles/HeliosCV2022_EngineTruck.dir/Serials
 
 
 # =============================================================================
@@ -85,9 +64,9 @@ build CMakeFiles/HeliosCV2022_EngineTruck.dir/Serials/SerialPort.cpp.o: CXX_COMP
 #############################################
 # Link the executable HeliosCV2022_EngineTruck
 
-build HeliosCV2022_EngineTruck: CXX_EXECUTABLE_LINKER__HeliosCV2022_EngineTruck_Debug CMakeFiles/HeliosCV2022_EngineTruck.dir/main.cpp.o CMakeFiles/HeliosCV2022_EngineTruck.dir/PreProcess/PreProcess.cpp.o CMakeFiles/HeliosCV2022_EngineTruck.dir/Detector/Detector.cpp.o CMakeFiles/HeliosCV2022_EngineTruck.dir/Serials/SerialPort.cpp.o | /usr/local/lib/libopencv_highgui.so.4.5.4 /usr/local/lib/libopencv_calib3d.so.4.5.4 /usr/local/lib/libopencv_videoio.so.4.5.4 /usr/local/lib/libopencv_imgcodecs.so.4.5.4 /usr/local/lib/libopencv_features2d.so.4.5.4 /usr/local/lib/libopencv_imgproc.so.4.5.4 /usr/local/lib/libopencv_flann.so.4.5.4 /usr/local/lib/libopencv_core.so.4.5.4
+build HeliosCV2022_EngineTruck: CXX_EXECUTABLE_LINKER__HeliosCV2022_EngineTruck_Debug CMakeFiles/HeliosCV2022_EngineTruck.dir/main.cpp.o | Detector/libDetector.a PreProcess/libPreProcess.a Serials/libSerials.a /usr/local/lib/libopencv_highgui.so.4.5.4 /usr/local/lib/libopencv_calib3d.so.4.5.4 /usr/local/lib/libopencv_highgui.so.4.5.4 /usr/local/lib/libopencv_videoio.so.4.5.4 /usr/local/lib/libopencv_imgcodecs.so.4.5.4 /usr/local/lib/libopencv_calib3d.so.4.5.4 /usr/local/lib/libopencv_features2d.so.4.5.4 /usr/local/lib/libopencv_imgproc.so.4.5.4 /usr/local/lib/libopencv_flann.so.4.5.4 /usr/local/lib/libopencv_core.so.4.5.4 /usr/local/lib/libopencv_highgui.so.4.5.4 /usr/local/lib/libopencv_videoio.so.4.5.4 /usr/local/lib/libopencv_imgcodecs.so.4.5.4 /usr/local/lib/libopencv_calib3d.so.4.5.4 /usr/local/lib/libopencv_features2d.so.4.5.4 /usr/local/lib/libopencv_imgproc.so.4.5.4 /usr/local/lib/libopencv_flann.so.4.5.4 /usr/local/lib/libopencv_core.so.4.5.4 /usr/local/lib/libopencv_highgui.so.4.5.4 /usr/local/lib/libopencv_videoio.so.4.5.4 /usr/local/lib/libopencv_imgcodecs.so.4.5.4 /usr/local/lib/libopencv_calib3d.so.4.5.4 /usr/local/lib/libopencv_features2d.so.4.5.4 /usr/local/lib/libopencv_imgproc.so.4.5.4 /usr/local/lib/libopencv_flann.so.4.5.4 /usr/local/lib/libopencv_core.so.4.5.4 /usr/local/lib/libopencv_videoio.so.4.5.4 /usr/local/lib/libopencv_imgcodecs.so.4.5.4 /usr/local/lib/libopencv_features2d.so.4.5.4 /usr/local/lib/libopencv_imgproc.so.4.5.4 /usr/local/lib/libopencv_flann.so.4.5.4 /usr/local/lib/libopencv_core.so.4.5.4 || Detector/libDetector.a PreProcess/libPreProcess.a Serials/libSerials.a
   FLAGS = -g
-  LINK_LIBRARIES = -Wl,-rpath,/usr/local/lib  /usr/local/lib/libopencv_highgui.so.4.5.4  /usr/local/lib/libopencv_calib3d.so.4.5.4  /usr/local/lib/libopencv_videoio.so.4.5.4  /usr/local/lib/libopencv_imgcodecs.so.4.5.4  /usr/local/lib/libopencv_features2d.so.4.5.4  /usr/local/lib/libopencv_imgproc.so.4.5.4  /usr/local/lib/libopencv_flann.so.4.5.4  /usr/local/lib/libopencv_core.so.4.5.4
+  LINK_LIBRARIES = -Wl,-rpath,/usr/local/lib  Detector/libDetector.a  PreProcess/libPreProcess.a  Serials/libSerials.a  /usr/local/lib/libopencv_highgui.so.4.5.4  /usr/local/lib/libopencv_calib3d.so.4.5.4  /usr/local/lib/libopencv_highgui.so.4.5.4  /usr/local/lib/libopencv_videoio.so.4.5.4  /usr/local/lib/libopencv_imgcodecs.so.4.5.4  /usr/local/lib/libopencv_calib3d.so.4.5.4  /usr/local/lib/libopencv_features2d.so.4.5.4  /usr/local/lib/libopencv_imgproc.so.4.5.4  /usr/local/lib/libopencv_flann.so.4.5.4  /usr/local/lib/libopencv_core.so.4.5.4  /usr/local/lib/libopencv_highgui.so.4.5.4  /usr/local/lib/libopencv_videoio.so.4.5.4  /usr/local/lib/libopencv_imgcodecs.so.4.5.4  /usr/local/lib/libopencv_calib3d.so.4.5.4  /usr/local/lib/libopencv_features2d.so.4.5.4  /usr/local/lib/libopencv_imgproc.so.4.5.4  /usr/local/lib/libopencv_flann.so.4.5.4  /usr/local/lib/libopencv_core.so.4.5.4  /usr/local/lib/libopencv_highgui.so.4.5.4  /usr/local/lib/libopencv_videoio.so.4.5.4  /usr/local/lib/libopencv_imgcodecs.so.4.5.4  /usr/local/lib/libopencv_calib3d.so.4.5.4  /usr/local/lib/libopencv_features2d.so.4.5.4  /usr/local/lib/libopencv_imgproc.so.4.5.4  /usr/local/lib/libopencv_flann.so.4.5.4  /usr/local/lib/libopencv_core.so.4.5.4  /usr/local/lib/libopencv_videoio.so.4.5.4  /usr/local/lib/libopencv_imgcodecs.so.4.5.4  /usr/local/lib/libopencv_features2d.so.4.5.4  /usr/local/lib/libopencv_imgproc.so.4.5.4  /usr/local/lib/libopencv_flann.so.4.5.4  /usr/local/lib/libopencv_core.so.4.5.4
   OBJECT_DIR = CMakeFiles/HeliosCV2022_EngineTruck.dir
   POST_BUILD = :
   PRE_LINK = :
@@ -119,7 +98,202 @@ build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
 build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 
 # =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target Detector
+
+
+#############################################
+# Order-only phony target for Detector
+
+build cmake_object_order_depends_target_Detector: phony || Detector/CMakeFiles/Detector.dir
+
+build Detector/CMakeFiles/Detector.dir/Detector.cpp.o: CXX_COMPILER__Detector_Debug /home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/Detector/Detector.cpp || cmake_object_order_depends_target_Detector
+  DEP_FILE = Detector/CMakeFiles/Detector.dir/Detector.cpp.o.d
+  FLAGS = -g
+  INCLUDES = -I/home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/Detector -I/home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/Serials -I/home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/PreProcess -isystem /usr/local/include/opencv4
+  OBJECT_DIR = Detector/CMakeFiles/Detector.dir
+  OBJECT_FILE_DIR = Detector/CMakeFiles/Detector.dir
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target Detector
+
+
+#############################################
+# Link the static library Detector/libDetector.a
+
+build Detector/libDetector.a: CXX_STATIC_LIBRARY_LINKER__Detector_Debug Detector/CMakeFiles/Detector.dir/Detector.cpp.o || /usr/local/lib/libopencv_highgui.so.4.5.4 /usr/local/lib/libopencv_calib3d.so.4.5.4 /usr/local/lib/libopencv_videoio.so.4.5.4 /usr/local/lib/libopencv_imgcodecs.so.4.5.4 /usr/local/lib/libopencv_features2d.so.4.5.4 /usr/local/lib/libopencv_imgproc.so.4.5.4 /usr/local/lib/libopencv_flann.so.4.5.4 /usr/local/lib/libopencv_core.so.4.5.4
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = Detector/CMakeFiles/Detector.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = Detector/libDetector.a
+  TARGET_PDB = Detector.a.dbg
+
+
+#############################################
+# Utility command for edit_cache
+
+build Detector/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/cmake-build-debug/Detector && /snap/clion/190/bin/cmake/linux/bin/ccmake -S/home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck -B/home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/cmake-build-debug
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build Detector/edit_cache: phony Detector/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build Detector/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/cmake-build-debug/Detector && /snap/clion/190/bin/cmake/linux/bin/cmake --regenerate-during-build -S/home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck -B/home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/cmake-build-debug
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build Detector/rebuild_cache: phony Detector/CMakeFiles/rebuild_cache.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target Serials
+
+
+#############################################
+# Order-only phony target for Serials
+
+build cmake_object_order_depends_target_Serials: phony || Serials/CMakeFiles/Serials.dir
+
+build Serials/CMakeFiles/Serials.dir/SerialPort.cpp.o: CXX_COMPILER__Serials_Debug /home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/Serials/SerialPort.cpp || cmake_object_order_depends_target_Serials
+  DEP_FILE = Serials/CMakeFiles/Serials.dir/SerialPort.cpp.o.d
+  FLAGS = -g
+  INCLUDES = -I/home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/Detector -I/home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/Serials -I/home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/PreProcess -isystem /usr/local/include/opencv4
+  OBJECT_DIR = Serials/CMakeFiles/Serials.dir
+  OBJECT_FILE_DIR = Serials/CMakeFiles/Serials.dir
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target Serials
+
+
+#############################################
+# Link the static library Serials/libSerials.a
+
+build Serials/libSerials.a: CXX_STATIC_LIBRARY_LINKER__Serials_Debug Serials/CMakeFiles/Serials.dir/SerialPort.cpp.o || /usr/local/lib/libopencv_highgui.so.4.5.4 /usr/local/lib/libopencv_calib3d.so.4.5.4 /usr/local/lib/libopencv_videoio.so.4.5.4 /usr/local/lib/libopencv_imgcodecs.so.4.5.4 /usr/local/lib/libopencv_features2d.so.4.5.4 /usr/local/lib/libopencv_imgproc.so.4.5.4 /usr/local/lib/libopencv_flann.so.4.5.4 /usr/local/lib/libopencv_core.so.4.5.4
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = Serials/CMakeFiles/Serials.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = Serials/libSerials.a
+  TARGET_PDB = Serials.a.dbg
+
+
+#############################################
+# Utility command for edit_cache
+
+build Serials/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/cmake-build-debug/Serials && /snap/clion/190/bin/cmake/linux/bin/ccmake -S/home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck -B/home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/cmake-build-debug
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build Serials/edit_cache: phony Serials/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build Serials/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/cmake-build-debug/Serials && /snap/clion/190/bin/cmake/linux/bin/cmake --regenerate-during-build -S/home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck -B/home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/cmake-build-debug
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build Serials/rebuild_cache: phony Serials/CMakeFiles/rebuild_cache.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target PreProcess
+
+
+#############################################
+# Order-only phony target for PreProcess
+
+build cmake_object_order_depends_target_PreProcess: phony || PreProcess/CMakeFiles/PreProcess.dir
+
+build PreProcess/CMakeFiles/PreProcess.dir/PreProcess.cpp.o: CXX_COMPILER__PreProcess_Debug /home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/PreProcess/PreProcess.cpp || cmake_object_order_depends_target_PreProcess
+  DEP_FILE = PreProcess/CMakeFiles/PreProcess.dir/PreProcess.cpp.o.d
+  FLAGS = -g
+  INCLUDES = -I/home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/Detector -I/home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/Serials -I/home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/PreProcess -isystem /usr/local/include/opencv4
+  OBJECT_DIR = PreProcess/CMakeFiles/PreProcess.dir
+  OBJECT_FILE_DIR = PreProcess/CMakeFiles/PreProcess.dir
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target PreProcess
+
+
+#############################################
+# Link the static library PreProcess/libPreProcess.a
+
+build PreProcess/libPreProcess.a: CXX_STATIC_LIBRARY_LINKER__PreProcess_Debug PreProcess/CMakeFiles/PreProcess.dir/PreProcess.cpp.o || /usr/local/lib/libopencv_highgui.so.4.5.4 /usr/local/lib/libopencv_calib3d.so.4.5.4 /usr/local/lib/libopencv_videoio.so.4.5.4 /usr/local/lib/libopencv_imgcodecs.so.4.5.4 /usr/local/lib/libopencv_features2d.so.4.5.4 /usr/local/lib/libopencv_imgproc.so.4.5.4 /usr/local/lib/libopencv_flann.so.4.5.4 /usr/local/lib/libopencv_core.so.4.5.4
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = PreProcess/CMakeFiles/PreProcess.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = PreProcess/libPreProcess.a
+  TARGET_PDB = PreProcess.a.dbg
+
+
+#############################################
+# Utility command for edit_cache
+
+build PreProcess/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/cmake-build-debug/PreProcess && /snap/clion/190/bin/cmake/linux/bin/ccmake -S/home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck -B/home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/cmake-build-debug
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build PreProcess/edit_cache: phony PreProcess/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build PreProcess/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/cmake-build-debug/PreProcess && /snap/clion/190/bin/cmake/linux/bin/cmake --regenerate-during-build -S/home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck -B/home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/cmake-build-debug
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build PreProcess/rebuild_cache: phony PreProcess/CMakeFiles/rebuild_cache.util
+
+# =============================================================================
 # Target aliases.
+
+build Detector: phony Detector/libDetector.a
+
+build PreProcess: phony PreProcess/libPreProcess.a
+
+build Serials: phony Serials/libSerials.a
+
+build libDetector.a: phony Detector/libDetector.a
+
+build libPreProcess.a: phony PreProcess/libPreProcess.a
+
+build libSerials.a: phony Serials/libSerials.a
 
 # =============================================================================
 # Folder targets.
@@ -129,7 +303,28 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 #############################################
 # Folder: /home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/cmake-build-debug
 
-build all: phony HeliosCV2022_EngineTruck
+build all: phony HeliosCV2022_EngineTruck Detector/all Serials/all PreProcess/all
+
+# =============================================================================
+
+#############################################
+# Folder: /home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/cmake-build-debug/Detector
+
+build Detector/all: phony Detector/libDetector.a
+
+# =============================================================================
+
+#############################################
+# Folder: /home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/cmake-build-debug/PreProcess
+
+build PreProcess/all: phony PreProcess/libPreProcess.a
+
+# =============================================================================
+
+#############################################
+# Folder: /home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/cmake-build-debug/Serials
+
+build Serials/all: phony Serials/libSerials.a
 
 # =============================================================================
 # Built-in targets
@@ -138,14 +333,14 @@ build all: phony HeliosCV2022_EngineTruck
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | ../CMakeLists.txt /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCInformation.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCXXInformation.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCommonLanguageInclude.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/CMakeGenericSystem.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/CMakeInitializeConfigs.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/CMakeLanguageInformation.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/CMakeSystemSpecificInformation.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/CMakeSystemSpecificInitialize.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/CMakeCommonCompilerMacros.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GNU-C.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GNU-CXX.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GNU.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/FindPackageMessage.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux-GNU-C.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux-GNU-CXX.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux-GNU.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/Platform/UnixPaths.cmake /usr/local/lib/cmake/opencv4/OpenCVConfig-version.cmake /usr/local/lib/cmake/opencv4/OpenCVConfig.cmake /usr/local/lib/cmake/opencv4/OpenCVModules-release.cmake /usr/local/lib/cmake/opencv4/OpenCVModules.cmake CMakeCache.txt CMakeFiles/3.22.3/CMakeCCompiler.cmake CMakeFiles/3.22.3/CMakeCXXCompiler.cmake CMakeFiles/3.22.3/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | ../CMakeLists.txt ../Detector/CMakeLists.txt ../PreProcess/CMakeLists.txt ../Serials/CMakeLists.txt /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCInformation.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCXXInformation.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCommonLanguageInclude.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/CMakeGenericSystem.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/CMakeInitializeConfigs.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/CMakeLanguageInformation.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/CMakeSystemSpecificInformation.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/CMakeSystemSpecificInitialize.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/CMakeCommonCompilerMacros.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GNU-C.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GNU-CXX.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GNU.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/FindPackageMessage.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux-GNU-C.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux-GNU-CXX.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux-GNU.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/Platform/UnixPaths.cmake /usr/local/lib/cmake/opencv4/OpenCVConfig-version.cmake /usr/local/lib/cmake/opencv4/OpenCVConfig.cmake /usr/local/lib/cmake/opencv4/OpenCVModules-release.cmake /usr/local/lib/cmake/opencv4/OpenCVModules.cmake CMakeCache.txt CMakeFiles/3.22.3/CMakeCCompiler.cmake CMakeFiles/3.22.3/CMakeCXXCompiler.cmake CMakeFiles/3.22.3/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build ../CMakeLists.txt /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCInformation.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCXXInformation.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCommonLanguageInclude.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/CMakeGenericSystem.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/CMakeInitializeConfigs.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/CMakeLanguageInformation.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/CMakeSystemSpecificInformation.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/CMakeSystemSpecificInitialize.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/CMakeCommonCompilerMacros.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GNU-C.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GNU-CXX.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GNU.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/FindPackageMessage.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux-GNU-C.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux-GNU-CXX.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux-GNU.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/Platform/UnixPaths.cmake /usr/local/lib/cmake/opencv4/OpenCVConfig-version.cmake /usr/local/lib/cmake/opencv4/OpenCVConfig.cmake /usr/local/lib/cmake/opencv4/OpenCVModules-release.cmake /usr/local/lib/cmake/opencv4/OpenCVModules.cmake CMakeCache.txt CMakeFiles/3.22.3/CMakeCCompiler.cmake CMakeFiles/3.22.3/CMakeCXXCompiler.cmake CMakeFiles/3.22.3/CMakeSystem.cmake: phony
+build ../CMakeLists.txt ../Detector/CMakeLists.txt ../PreProcess/CMakeLists.txt ../Serials/CMakeLists.txt /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCInformation.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCXXInformation.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCommonLanguageInclude.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/CMakeGenericSystem.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/CMakeInitializeConfigs.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/CMakeLanguageInformation.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/CMakeSystemSpecificInformation.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/CMakeSystemSpecificInitialize.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/CMakeCommonCompilerMacros.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GNU-C.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GNU-CXX.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GNU.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/FindPackageMessage.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux-GNU-C.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux-GNU-CXX.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux-GNU.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux.cmake /snap/clion/190/bin/cmake/linux/share/cmake-3.22/Modules/Platform/UnixPaths.cmake /usr/local/lib/cmake/opencv4/OpenCVConfig-version.cmake /usr/local/lib/cmake/opencv4/OpenCVConfig.cmake /usr/local/lib/cmake/opencv4/OpenCVModules-release.cmake /usr/local/lib/cmake/opencv4/OpenCVModules.cmake CMakeCache.txt CMakeFiles/3.22.3/CMakeCCompiler.cmake CMakeFiles/3.22.3/CMakeCXXCompiler.cmake CMakeFiles/3.22.3/CMakeSystem.cmake: phony
 
 
 #############################################

@@ -207,6 +207,15 @@ CMAKE_STRIP:FILEPATH=/usr/bin/strip
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
 //Value Computed by CMake
+Detector_BINARY_DIR:STATIC=/home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/cmake-build-debug/Detector
+
+//Value Computed by CMake
+Detector_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+Detector_SOURCE_DIR:STATIC=/home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/Detector
+
+//Value Computed by CMake
 HeliosCV2022_EngineTruck_BINARY_DIR:STATIC=/home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/cmake-build-debug
 
 //Value Computed by CMake
@@ -215,8 +224,44 @@ HeliosCV2022_EngineTruck_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 HeliosCV2022_EngineTruck_SOURCE_DIR:STATIC=/home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck
 
+//Value Computed by CMake
+Main_BINARY_DIR:STATIC=/home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/cmake-build-debug/Main
+
+//Value Computed by CMake
+Main_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+Main_SOURCE_DIR:STATIC=/home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/Main
+
 //The directory containing a CMake configuration file for OpenCV.
 OpenCV_DIR:PATH=/usr/local/lib/cmake/opencv4
+
+//Value Computed by CMake
+PreProcess_BINARY_DIR:STATIC=/home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/cmake-build-debug/PreProcess
+
+//Value Computed by CMake
+PreProcess_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+PreProcess_SOURCE_DIR:STATIC=/home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/PreProcess
+
+//Value Computed by CMake
+Serial_BINARY_DIR:STATIC=/home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/cmake-build-debug/Serials
+
+//Value Computed by CMake
+Serial_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+Serial_SOURCE_DIR:STATIC=/home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/Serials
+
+//Value Computed by CMake
+Serials_BINARY_DIR:STATIC=/home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/cmake-build-debug/Serials
+
+//Value Computed by CMake
+Serials_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+Serials_SOURCE_DIR:STATIC=/home/wjy/Projects/Robomaster_project_learning/HeliosCV2022_EngineTruck/Serials
 
 
 ########################
@@ -321,7 +366,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=1
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=4
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

@@ -15,6 +15,8 @@ int main() {
     }
     capture.set(CAP_PROP_FRAME_HEIGHT, 480);
     capture.set(CAP_PROP_FRAME_WIDTH, 640);
+    //Serial serial;
+    //serial.InitPort();
     while (true) {
         capture >> frame;
         if (frame.empty()) {
@@ -26,8 +28,9 @@ int main() {
         detectorB.detect();
         frame = detectorB.getImg();
         imshow("frame", frame);
-
-        int c = waitKey(10);
+        //serial.pack();
+        //serial.WriteData();
+        int c = waitKey(1);
         if (c == 27) {
             break;
         }

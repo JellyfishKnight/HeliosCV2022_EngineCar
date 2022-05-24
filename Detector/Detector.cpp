@@ -97,7 +97,7 @@ void DetectorA::polygonDetect(Mat &srcImg, double epsilon, int minAcreage, int m
     float temp_dist;
     vector<float> dist;
     if (tar.size() >= 4) {
-        for (int i : tar) {
+        for (int i: tar) {
             temp_dist = (contours_center[i].x - wl[0] / 2) * (contours_center[i].x - wl[0] / 2) +
                         (contours_center[i].y - wl[1] / 2) * (contours_center[i].y - wl[1] / 2);
             dist.push_back(temp_dist);
@@ -286,7 +286,7 @@ bool DetectorA::target_test(vector<Point2f> Points) {
  */
 float DetectorA::average(float &a1, float &a2, float &a3, float &a4) {
     float ave;
-    ave = (a1+a2+a3+a4)/4;
+    ave = (a1 + a2 + a3 + a4) / 4;
     return ave;
 
 }
@@ -331,10 +331,10 @@ int DetectorA::rectangel(int *form, int p1, int p2, int p3, int p4) {
  * @return type
  */
 
-int DetectorA::which_kind(vector<Point2f> contours_center, const vector<int>& tar_more, const vector<Point2f>& Points) {
+int DetectorA::which_kind(vector<Point2f> contours_center, const vector<int> &tar_more, const vector<Point2f> &Points) {
     int flag1 = 0, count1 = 0, flag2 = 0, count2 = 0, sum = 0;
 
-    for (auto & i : contours_center)//全部点
+    for (auto &i: contours_center)//全部点
     {
         if (isin(Points, i)) {
             flag1 = 1, count1++;
@@ -342,7 +342,7 @@ int DetectorA::which_kind(vector<Point2f> contours_center, const vector<int>& ta
     }
     if (count1 == 0) return 1;
 
-    for (int i : tar_more)//二维码
+    for (int i: tar_more)//二维码
     {
         if (isin(Points, contours_center[i])) {
             flag2 = 1, count2++;
@@ -388,8 +388,10 @@ bool DetectorA::isin(vector<Point2f> Points, Point2f p) {
  * @param p3
  * @param p4
  */
-void DetectorA::my_rotate(int inputType, vector<Point2f> Points, vector<Point2f> contours_center, const int *form, int p1, int p2,
-                          int p3, int p4) {
+void
+DetectorA::my_rotate(int inputType, vector<Point2f> Points, vector<Point2f> contours_center, const int *form, int p1,
+                     int p2,
+                     int p3, int p4) {
     if (inputType == 1) {
         up_down = 0;
         left_right = 0;
@@ -447,9 +449,9 @@ void DetectorA::my_rotate(int inputType, vector<Point2f> Points, vector<Point2f>
  * @return 中心点坐标
  */
 
-Point2f DetectorA::aver_center(const vector<Point2f>& P) {
+Point2f DetectorA::aver_center(const vector<Point2f> &P) {
     Point2f result;
-    for (auto & i : P) {
+    for (auto &i: P) {
         result.x += i.x;
         result.y += i.y;
     }
@@ -511,10 +513,10 @@ void DetectorB::detect() {
 void DetectorB::SelectContours() {
     vector<Vec4i> hierarchy;
     findContours(binary, contours, hierarchy, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE, Point(0, 0));
-    imshow("threshold",binary);
+    imshow("threshold", binary);
 
     for (auto &contour: contours) {
-        if(contourArea(contour) >= 3000) {
+        if (contourArea(contour) >= 3000) {
             rects.push_back(minAreaRect(contour));
             interested_contours.push_back(contour);
         }
@@ -545,7 +547,7 @@ bool DetectorB::SelectCornerRect() {
         vector<vector<Point>> selectMatchContours = cornerContours;
         cornerContours.clear();
         vector<RotatedRect> interested_rects;
-        for (auto &i : selectMatchContours) {
+        for (auto &i: selectMatchContours) {
             interested_rects.push_back(minAreaRect(i));
         }
         for (int i = 0; i < interested_rects.size(); i++) {
@@ -558,7 +560,9 @@ bool DetectorB::SelectCornerRect() {
         cout << "Not enough rects" << endl;
         return false;
     }
+    return false;
 }
+
 
 
 /**
@@ -617,18 +621,19 @@ bool DetectorB::findBarCode() {
     Mat kernel = getStructuringElement(MORPH_DILATE, Size(3, 3));
     dilate(binary, binary, kernel, Point(-1, -1), 5);
     findContours(binary, contours_barcode, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE);
-    drawContours(binary,contours_barcode,-1,Scalar(0,255,0),1,LINE_8);
+    drawContours(binary, contours_barcode, -1, Scalar(0, 255, 0), 1, LINE_8);
     bool check = false;
     for (auto &i: contours_barcode) {
         if (contourArea(i) >= 10000 && contourArea(i) <= 80000) {
             RotatedRect centerRect;
             centerRect = minAreaRect(i);
-            if(centerRect.size.area() / contourArea(i) <= 1.2 && centerRect.size.area() / contourArea(i) >= 1) {
+            if (centerRect.size.area() / contourArea(i) <= 1.2 && centerRect.size.area() / contourArea(i) >= 1) {
                 if ((centerRect.size.height / centerRect.size.width >= 0.5 &&
                      centerRect.size.height / centerRect.size.width <= 0.7) ||
                     (centerRect.size.height / centerRect.size.width >= 1.3 &&
                      centerRect.size.height / centerRect.size.width <= 1.7)) {
-                    if(abs(centerRect.center.x - CenterOfCenter.x) <= 50 && abs(centerRect.center.y - CenterOfCenter.y) <= 50) {
+                    if (abs(centerRect.center.x - CenterOfCenter.x) <= 50 &&
+                        abs(centerRect.center.y - CenterOfCenter.y) <= 50) {
                         check = true;
                         Point2f point[4];
                         centerRect.points(point);
