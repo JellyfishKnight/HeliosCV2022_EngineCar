@@ -91,10 +91,10 @@ void Serial::pack(uint8_t set, uint8_t direction, uint8_t toggle_flag) {
 //    memcpy(buff + 1, &CmdID, 1);
 //    memcpy(buff + 2, &yaw, 4);
 //   memcpy(buff + 6, &pitch, 4);
-    memcpy(buff + 4, &set, 4);
-    memcpy(buff + 8, &direction, 4);
-    memcpy(buff + 12, &toggle_flag, 4);
-    buff[20] = static_cast<char>(VISION_TOF);
+    memcpy(buff + 1, &set, 1);
+    memcpy(buff + 2, &direction, 1);
+    memcpy(buff + 3, &toggle_flag, 1);
+    buff[4] = static_cast<char>(VISION_TOF);
 }
 
 /**
@@ -268,3 +268,4 @@ int Serial::set_opt(int fd, int nSpeed, char nEvent, int nBits, int nStop) {
     printf("set done!\n");
     return 0;
 }
+

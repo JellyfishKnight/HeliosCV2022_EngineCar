@@ -13,6 +13,7 @@
 #include <cstdio>
 
 
+
 #define PC2STM32 "/dev/ttyUSB0"//串口位置
 
 
@@ -112,5 +113,6 @@ public:
 
     bool ReadData(struct ReceiveData &buffer);
 };
+
 
 #endif //HELIOSCV2022_ENGINETRUCK_SERIALPORT_H

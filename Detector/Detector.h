@@ -7,10 +7,22 @@
 
 #include<iostream>
 #include<opencv2/core.hpp>
-
+#include "SerialPort.h"
 
 using namespace std;
 using namespace cv;
+
+
+/**
+ * @brief 需要被传输的数据
+ * @param set->自由度,0为左右自由度,1为上下自由度
+ * @param direction->1为左或上,0为右或下,2为向下翻两次
+ * @param toggle_flag->-1为旋转,0为停止
+ */
+extern int set;
+extern int direction;
+extern int toggle_flag;
+
 
 /**
  * @brief主要介绍本类的一些数据成员
@@ -18,7 +30,7 @@ using namespace cv;
  * @param gray->处理后的灰度图
  * @param binary->处理后的二值化图
  * @param type->识别到的面的类型，1,2,3，分别代表空白，二维码，R面
- * @param up_dowm->上下旋转的角度，上为正
+ * @param up_down->上下旋转的角度，上为正
  * @param left_right->左右旋转的角度，左为正
  * @param center_rotate->中心旋转的角度，逆时针为正
  * @param wl->读入图像的长宽？
@@ -75,11 +87,7 @@ public:
 
     void detect();
 
-    int getUpDown();
-
-    int getType();
-
-    int getLeftRight();
+    void SetData() const;
 
     ~DetectorA();
 };
@@ -153,6 +161,8 @@ public:
     Mat getImg();
 
     void detect();
+
+    void SetData() const;
 
     ~DetectorB();
 

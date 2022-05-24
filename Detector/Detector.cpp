@@ -2,13 +2,16 @@
 // Created by wjy on 22-5-21.
 //
 #include "Detector.h"
-#include "../PreProcess/PreProcess.h"
-
+#include "PreProcess.h"
 #include <iostream>
 #include <opencv2/core.hpp>
 #include <opencv2/highgui.hpp>
 #include <opencv2/imgproc.hpp>
 
+
+int set;
+int direction;
+int toggle_flag;
 
 using namespace std;
 using namespace cv;
@@ -165,8 +168,6 @@ void DetectorA::polygonDetect(Mat &srcImg, double epsilon, int minAcreage, int m
         } else type = 4;
 
         my_rotate(type, tar_Points, contours_center, form, tar[min1], tar[min2], tar[min3], tar[min4]);
-        cout << "up_down<<" << up_down << endl;
-        cout << "left_right<<" << left_right << endl;
     }
     circle(binary, Point2f(wl[0] / 2, wl[1] / 2), 2, Scalar(0, 0, 0), 2, 8, 0);
     imshow("binary", binary);
@@ -441,6 +442,7 @@ DetectorA::my_rotate(int inputType, vector<Point2f> Points, vector<Point2f> cont
         up_down = 2;
         left_right = 2;
     }
+    cout << "======" << set << direction << toggle_flag << endl;
 }
 
 /**
@@ -458,6 +460,30 @@ Point2f DetectorA::aver_center(const vector<Point2f> &P) {
     result.x /= P.size();
     result.y /= P.size();
     return result;
+}
+
+void DetectorA::SetData() const {
+    if (up_down != 0 && left_right == 0) {
+        set = 1;
+        toggle_flag = 1;
+        if (up_down > 0) {
+            direction = 1;
+        } else {
+            direction = 0;
+        }
+    } else if (up_down == 0 && left_right != 0) {
+        set = 0;
+        toggle_flag = 1;
+        if (left_right > 0) {
+            direction = 1;
+        } else {
+            direction = 0;
+        }
+    } else if (up_down == 0 && left_right == 0) {
+        toggle_flag = 0;
+    } else if (up_down == 2 && left_right == 2) {
+        toggle_flag = 0;
+    }
 }
 
 
@@ -481,29 +507,6 @@ void DetectorB::detect() {
         Direction = JudgeSides();
     } else {
         Direction = -2;
-    }
-    switch (Direction) {
-        case Down_1:
-            cout << "Down 1 time" << endl;
-            break;
-        case Down_2:
-            cout << "Down 2 times" << endl;
-            break;
-        case Up_1:
-            cout << "Up 1 time" << endl;
-            break;
-        case Left_1:
-            cout << "Left 1 time" << endl;
-            break;
-        case Right_1:
-            cout << "Right 1 time" << endl;
-            break;
-        case NoMove:
-            cout << "No move" << endl;
-            break;
-        default:
-            cout << "Not detected" << endl;
-            break;
     }
 }
 
@@ -530,7 +533,7 @@ void DetectorB::SelectContours() {
 
 bool DetectorB::SelectCornerRect() {
     for (int i = 0; i < interested_contours.size(); i++) {
-        if (rects[i].size.area() < 12000 && rects[i].size.area() > 3000) {
+        if (rects[i].size.area() < 12000) {
             if (rects[i].size.height / rects[i].size.width >= 0.75 &&
                 rects[i].size.height / rects[i].size.width <= 1.33) {
                 Point2f points1[4];
@@ -582,7 +585,7 @@ void DetectorB::findFullFilledRect() {
         CentersOfRects.push_back(center);
         int check = 0;
         double area = contourArea(cornerContours[i]);
-        if (cornerRect[i].size.area() / area >= 1 && cornerRect[i].size.area() / area <= 1.5) {
+        if (cornerRect[i].size.area() / area >= 0.6666 && cornerRect[i].size.area() / area <= 1.5 ) {
             check++;
             num = i;
         }
@@ -671,4 +674,31 @@ int DetectorB::JudgeSides() {
             }
         }
     }
+}
+
+void DetectorB::SetData() const {
+    if (Direction == 0) {               //向上90
+        set = 1;
+        toggle_flag = 1;
+        direction = 1;
+    } else if (Direction == 1) {        //向左90
+        set = 0;
+        toggle_flag = 1;
+        direction = 1;
+    } else if (Direction == 2) {        //向右90
+        set = 0;
+        toggle_flag = 1;
+        direction = 0;
+    } else if (Direction == 3) {        //向下90
+        set = 1;
+        toggle_flag = 1;
+        direction = 0;
+    } else if (Direction == 4) {        //向下180
+        set = 1;
+        toggle_flag = 1;
+        direction = 2;
+    } else if (Direction == 5) {        //不动
+        toggle_flag = 0;
+    }
+    cout << "======" << set << direction << toggle_flag << endl;
 }
