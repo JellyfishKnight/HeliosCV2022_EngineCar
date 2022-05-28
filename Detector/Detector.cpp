@@ -495,11 +495,18 @@ Mat DetectorB::getImg() {
     return img;
 }
 
+/**
+ * @brief 检测的主程序
+ */
 void DetectorB::detect() {
     PreProcess(img, gray, binary, PlanB);
     Direction = Rotate_mine();
 }
 
+/**
+ * @brief 直接移植的整个代码,未整理,但能用
+ * @return 返回Direction
+ */
 int DetectorB::Rotate_mine() {
     Mat pure_threshold = binary.clone();
     Mat threshold_clone = binary.clone();
