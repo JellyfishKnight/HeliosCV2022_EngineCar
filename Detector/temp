@@ -16,7 +16,7 @@ int toggle_flag;
 using namespace std;
 using namespace cv;
 
-DetectorA::DetectorA(Mat &img) : img(img) {}
+DetectorA::DetectorA(Mat &frame) : img(frame) {}
 
 DetectorA::~DetectorA() = default;
 
@@ -487,7 +487,7 @@ void DetectorA::SetData() const {
 
 //Detection B
 
-DetectorB::DetectorB(Mat &img) : img(img) {}
+DetectorB::DetectorB(Mat &frame) : img(frame) {}
 
 DetectorB::~DetectorB() = default;
 
@@ -497,27 +497,39 @@ Mat DetectorB::getImg() {
 
 void DetectorB::detect() {
     PreProcess(img, gray, binary, PlanB);
-    Direction = Rotate_mine();
+    imshow("threshold",binary);
+    SelectContours();
+    if (SelectCornerRect()) {
+        findFullFilledRect();
+        SolveCenter();
+        findBarCode();
+        Direction = JudgeSides();
+    } else {
+        Direction = -2;
+    }
 }
 
-int DetectorB::Rotate_mine() {
-    Mat pure_threshold = binary.clone();
-    Mat threshold_clone = binary.clone();
-    imshow("threshold",binary);
-    
-
-
+/**
+ * @brief 寻找所有的轮廓并进行一次筛选优化运行效率
+ */
+void DetectorB::SelectContours() {
     vector<Vec4i> hierarchy;
     findContours(binary, contours, hierarchy, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE, Point(0, 0));
-
-    
+    //drawContours(binary, contours, -1, Scalar(255, 0, 0), 2, LINE_8);
     for (auto &contour: contours) {
         if(contour.size() >= 10) {
             rects.push_back(minAreaRect(contour));
             interested_contours.push_back(contour);
         }
     }
-    
+}
+
+/**
+ * @brief 从第一次找到的轮廓中筛选符合条件的角上的矩形
+ * @brief 并画出符合条件的矩形
+ */
+
+bool DetectorB::SelectCornerRect() {
     for (int i = 0; i < interested_contours.size(); i++) {
         if (rects[i].size.area() < 15000 && rects[i].size.area() > 3000) {
             if (rects[i].size.height / rects[i].size.width >= 0.75 &&
@@ -532,8 +544,6 @@ int DetectorB::Rotate_mine() {
             }
         }
     }
-
-
     if (cornerContours.size() > 4) {
         vector<vector<Point>> selectMatchContours = cornerContours;
         cornerContours.clear();
@@ -545,11 +555,20 @@ int DetectorB::Rotate_mine() {
                 cornerContours.push_back(selectMatchContours[i]);
             }
         }
+        return true;
     } else if (cornerContours.size() < 4) {
-        return -2;
+        cout << "Not enough rects" << endl;
+        return false;
     }
+}
 
 
+
+/**
+ * @brief 找到被填充满的矩形并且画出其中心点
+ */
+
+void DetectorB::findFullFilledRect() {
     for (int i = 0; i < 4; i++) {
         cornerRect[i].points(point2F[i]);
         Point center(0, 0);
@@ -572,11 +591,17 @@ int DetectorB::Rotate_mine() {
         }
     }
 
-
     for (auto &i: number) {
         circle(img, centers[i], 2, Scalar(0, 255, 0), 2, LINE_8);
     }
+}
 
+
+/**
+ * @brief 根据找到的矩形中心解算矿石的中心
+ */
+
+void DetectorB::SolveCenter() {
     centerofcenter.x = 0;
     centerofcenter.y = 0;
     for (int i = 0; i < 4; i++) {
@@ -585,38 +610,49 @@ int DetectorB::Rotate_mine() {
     }
     centerofcenter.x /= 4;
     centerofcenter.y /= 4;
+}
 
 
-    if (interestedRect.size() == 2) {
-        Mat kernel = getStructuringElement(MORPH_DILATE, Size(3, 3));
-        dilate(binary, binary, kernel, Point(-1, -1), 5);
-        imshow("dilate",binary);
-        findContours(binary, contours_barcode, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE);
-        drawContours(binary,contours_barcode,-1,Scalar(0,255,0),1,LINE_8);
-        int check = 0;
-        for (auto &i: contours_barcode) {
-            if (contourArea(i) >= 10000 && contourArea(i) <= 150000) {
-                RotatedRect centerRect;
-                centerRect = minAreaRect(i);
-                if(centerRect.size.area() / contourArea(i) <= 2 && centerRect.size.area() / contourArea(i) >= 1) {
-                    if ((centerRect.size.height / centerRect.size.width >= 0.4 &&
-                         centerRect.size.height / centerRect.size.width <= 0.8) ||
-                        (centerRect.size.height / centerRect.size.width >= 1.2 &&
-                         centerRect.size.height / centerRect.size.width <= 1.8)) {
-                        if(abs(centerRect.center.x - centerofcenter.x) <= 10 && abs(centerRect.center.y - centerofcenter.y) <= 10) {
-                            check = 1;
-                            Point2f point[4];
-                            centerRect.points(point);
-                            for (int j = 0; j < 4; j++) {
-                                line(img, point[j], point[(j + 1) % 4], Scalar(0, 255, 0), 1, LINE_8);
-                            }
-                            break;
+/**
+ * @brief 判断此面是否有条形码
+ * @return 有则为true否则为false
+ */
+
+bool DetectorB::findBarCode() {
+    Mat kernel = getStructuringElement(MORPH_DILATE, Size(3, 3));
+    dilate(binary, binary, kernel, Point(-1, -1), 5);
+    imshow("dilate",binary);
+    findContours(binary, contours_barcode, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE);
+    //drawContours(dst_threshold,contours_barcode,-1,Scalar(0,255,0),1,LINE_8);
+    int check = 0;
+    for (auto &i: contours_barcode) {
+        if (contourArea(i) >= 10000 && contourArea(i) <= 150000) {
+            RotatedRect centerRect;
+            centerRect = minAreaRect(i);
+            if(centerRect.size.area() / contourArea(i) <= 2 && centerRect.size.area() / contourArea(i) >= 1) {
+                if ((centerRect.size.height / centerRect.size.width >= 0.4 &&
+                     centerRect.size.height / centerRect.size.width <= 0.8) ||
+                    (centerRect.size.height / centerRect.size.width >= 1.2 &&
+                     centerRect.size.height / centerRect.size.width <= 1.8)) {
+                    if(abs(centerRect.center.x - centerofcenter.x) <= 10 && abs(centerRect.center.y - centerofcenter.y) <= 10) {
+                        check = 1;
+                        Point2f point[4];
+                        centerRect.points(point);
+                        for (int j = 0; j < 4; j++) {
+                            line(img, point[j], point[(j + 1) % 4], Scalar(0, 255, 0), 1, LINE_8);
                         }
+                        break;
                     }
                 }
             }
         }
-        if (check == 1) {
+    }
+    return check;
+}
+
+int DetectorB::JudgeSides() {
+    if (FullFiilledRects.size() == 2) {
+        if (findBarCode()) {
             return NoMove;
         } else {
             return Down_2;
@@ -636,7 +672,6 @@ int DetectorB::Rotate_mine() {
             }
         }
     }
-
 }
 
 void DetectorB::SetData() const {

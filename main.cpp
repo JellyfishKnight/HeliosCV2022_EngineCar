@@ -25,7 +25,7 @@ int main() {
             break;
         }
         flip(frame, frame, 1);
-        DetectorA detector(frame);
+        DetectorB detector(frame);
         detector.detect();
         frame = detector.getImg();
         imshow("frame", frame);

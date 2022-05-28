@@ -124,36 +124,30 @@ private:
     Mat img;
     Mat gray;
     Mat binary;
-    int Direction{};
-
-    Point CenterOfCenter;
+    int Direction;
 
     vector<vector<Point>> contours;
     vector<RotatedRect> rects;
-
     vector<vector<Point>> interested_contours;
+
     vector<vector<Point>> cornerContours;
     vector<RotatedRect> cornerRect;
 
+    vector<RotatedRect> interested_rects;
+
     Point2f point2F[4][4];
-    vector<RotatedRect> FullFiilledRects;
-    vector<Point> CentersOfRects;
+    vector<RotatedRect> interestedRect;
+    vector<Point> centers;
     vector<int> number;
-    int num{};
+    int num;
+
+    vector<RotatedRect> FullFiilledRects;
+
+    Point centerofcenter;
 
     vector<vector<Point>> contours_barcode;
 
-    void SelectContours();
-
-    bool SelectCornerRect();
-
-    void findFullFilledRect();
-
-    void SolveCenter();
-
-    bool findBarCode();
-
-    int JudgeSides();
+    int Rotate_mine();
 
 public:
     DetectorB(Mat &frame);
